@@ -1,0 +1,132 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff0f5;
+  color: #3d3d3d;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2);
+  background-color: #ffffff;
+}
+
+.sidebar {
+  background-color: #ffc0cb;
+  color: #ffffff;
+  padding: 30px;
+  width: 30%;
+  text-align: center;
+}
+
+.sidebar img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-bottom: 20px;
+}
+
+.sidebar h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.main {
+  padding: 40px;
+  width: 70%;
+  background-color: #fff8fc;
+}
+
+.main h2 {
+  color: #e75480;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ffc0cb;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.main section {
+  margin-bottom: 30px;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding-top: 10px;
+}
+
+.pill-list li {
+  background-color: #ffe0eb;
+  color: #e91e63;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 1px solid #ffc0cb;
+  transition: all 0.3s ease;
+}
+
+.pill-list li:hover {
+  background-color: #ffc0cb;
+  color: white;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.certificate {
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 2px dashed #ffc0cb;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar,
+  .main {
+    width: 100%;
+  }
+
+  .sidebar {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

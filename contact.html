@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bea's Portfolio - Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">BA</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <a href="javascript:history.back()" class="back-button">← Back</a>
+
+    <div class="container">
+      <section class="contact-form">
+        <h2>Send a Message</h2>
+        <p>I'd love to hear from you! Please fill out the form below and I'll get back to you soon 💌</p>
+
+        <form id="contact-form">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Message:</label>
+    <textarea name="message" rows="5" required></textarea>
+
+    <button type="submit">Send</button>
+    <p id="response"></p>
+  </form>
+
+        <div style="margin-top: 20px;">
+          <button class="btn-secondary" onclick="showModal('homeModal')">🏠 Go to Home</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Beatrice Alberto</p>
+  </footer>
+
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to send this message?</p>
+      <button class="btn" onclick="submitForm()">Yes, Send</button>
+      <button class="btn-secondary" onclick="hideModal('confirmModal')">Cancel</button>
+    </div>
+  </div>
+
+  <div id="homeModal" class="modal">
+    <div class="modal-content">
+      <p>Do you want to go to the Home page?</p>
+      <button class="btn" onclick="window.location.href='index.html'">Yes</button>
+      <button class="btn-secondary" onclick="hideModal('homeModal')">No</button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxZp_zlB2Ao_tXYD1DNpo5gToHHn3G5PtFmYTdsHg2bNc761_hlObb2xJfDrqW1-Yfz/exec";
+    const form = document.getElementById("contact-form");
+    const responseMsg = document.getElementById("response");
+    let formData;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formData = new FormData(form);
+      showModal('confirmModal');
+    });
+
+    function submitForm() {
+      hideModal('confirmModal');
+      fetch(scriptURL, {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        responseMsg.textContent = "Message sent successfully!";
+        form.reset();
+      })
+      .catch(error => {
+        responseMsg.textContent = "Error sending message.";
+        console.error("Error!", error.message);
+      });
+    }
+
+    function showModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function hideModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+</body>
+</html>

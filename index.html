@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bea's Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body id="home-body" class="theme-default">
+  <header>
+    <div class="nav-container">
+      <div class="logo">BA</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Hello, I'm <span class="name">Beatrice Alberto</span></h1>
+        <p class="typing-text">An aspiring IT professional. A cybersecurity enthusiast. A creative web developer.</p>
+        <div class="hero-buttons">
+          <a href="about.html" class="btn">Learn More About Me</a>
+          <a href="projects.html" class="btn-secondary">See My Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-text">
+      <h2>Welcome to My Portfolio</h2>
+      <p>This personal website was created as part of a web development project to showcase my skills, interests, and experiences. It serves as a digital portfolio where I can present who I am—both professionally and creatively.</p>
+      <p>Built with HTML, CSS, and JavaScript, this site reflects my learning journey in web design, my passion for engaging digital experiences, and my commitment to becoming a future IT professional specializing in cybersecurity.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Beatrice Alberto</p>
+	<p class="source-text"> Source: https://www.freepik.com/free-vector/abstract-realistic-technology-particle-background_6757731.htm#fromView=keyword&page=1&position=3&uuid=975ab8d9-1b9d-4f4c-975c-84e78df8dc2b&query=Technology+Pink</p>
+  </footer>
+
+  <div class="color-switcher">
+    <label for="theme-select">🎨 Change Color:</label>
+    <select id="theme-select" onchange="changeTheme()">
+      <option value="">Default</option>
+      <option value="blue">Blue</option>
+      <option value="purple">Purple</option>
+      <option value="green">Green</option>
+    </select>
+  </div>
+
+  <script>
+    const text = document.querySelector('.typing-text');
+    const phrases = [
+      "An aspiring IT professional.",
+      "A cybersecurity enthusiast.",
+      "A creative web developer."
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+
+    function type() {
+      if (charIndex < phrases[index].length) {
+        text.textContent = phrases[index].substring(0, charIndex + 1);
+        charIndex++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        text.textContent = phrases[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+      } else {
+        index = (index + 1) % phrases.length;
+        setTimeout(type, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", type);
+
+    function changeTheme() {
+	const body = document.getElementById('home-body');
+	const select = document.getElementById('theme-select');
+	const value = select.value;
+	
+	body.classList.remove('theme-blue', 'theme-purple', 'theme-green');
+	
+	if (value === 'blue') {
+	body.classList.add('theme-blue');
+	} else if (value === 'purple') {
+	body.classList.add('theme-purple');
+	} else if (value === 'green') {
+	body.classList.add('theme-green');
+	}
+	}
+  </script>
+</body>
+</html>
